@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { Playfair_Display, Rubik } from "next/font/google";
+import ClientLayout from "./ClientLayout";
+import CardNav from "@/components/CardNav";
+import logo from "../public/icon.png";
+import { items } from "@/components/NavbarItems";
+import Footer from "@/components/Footer";
+
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const rubik = Rubik({
+  subsets: ["latin"],
+  variable: "--font-rubik",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Etqan Geoinformatics Systems",
+  description:
+    "Etqan for Geoinformatics Systems and Solutions is a leading specialized company that provides spatial systems ",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${playfair.variable} ${rubik.variable} ${geistMono.variable} antialiased`}
+      >
+        <ClientLayout>
+          <CardNav
+            logo={logo}
+            logoAlt="Company Logo"
+            items={items}
+            baseColor="#fff"
+            menuColor="#000"
+            buttonBgColor="#1694CC"
+            buttonTextColor="#fff"
+            ease="power3.out"
+          />
+          {children}
+          <Footer />
+        </ClientLayout>
+      </body>
+    </html>
+  );
+}
