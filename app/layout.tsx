@@ -53,6 +53,7 @@ export default function RootLayout({
             logoAlt="Company Logo"
             items={items}
             baseColor="#fff"
+            className=""
             menuColor="#000"
             buttonBgColor="#1694CC"
             buttonTextColor="#fff"

@@ -2,9 +2,10 @@ import type { CardNavItem } from "@/components/CardNav";
 
 const items: CardNavItem[] = [
   {
-    label: "Who Are We?",
+    label: "Home",
     bgColor: "#1694CC",
     textColor: "#ffffff",
+    href: "/",
     links: [
       {
         label: "Home",
@@ -20,9 +21,10 @@ const items: CardNavItem[] = [
     ],
   },
   {
-    label: "Our Services",
+    label: "Services",
     bgColor: "#1694CC",
     textColor: "#ffffff",
+    href: "/services",
     links: [
       {
         label: "Geoinformatics Data Services",
@@ -48,9 +50,10 @@ const items: CardNavItem[] = [
   },
   
   {
-    label: "Company",
+    label: "Projects",
     bgColor: "#1694CC",
     textColor: "#ffffff",
+    href: "/projects",
     links: [
       {
         label: "Projects",
@@ -67,8 +70,19 @@ const items: CardNavItem[] = [
         href: "#contact",
         ariaLabel: "Go to contact section",
       },
+      {
+        label: "Carrers",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
     ],
   },
+
+  
+  
+  
+  
   
 ];
 export { items };
+

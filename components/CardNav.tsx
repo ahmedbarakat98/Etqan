@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
 import { StaticImageData } from 'next/image';
+import Link from 'next/link';
 
 type CardNavLink = {
   label: string;
@@ -15,6 +16,7 @@ export type CardNavItem = {
   label: string;
   bgColor: string;
   textColor: string;
+  href: string;
   links: CardNavLink[];
 };
 
@@ -66,39 +68,37 @@ const CardNav: React.FC<CardNavProps> = ({
 
 
   const calculateHeight = () => {
-    const navEl = navRef.current;
-    if (!navEl) return 260;
+  const navEl = navRef.current;
+  if (!navEl) return 260;
 
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) {
-      const contentEl = navEl.querySelector('.card-nav-content') as HTMLElement;
-      if (contentEl) {
-        const wasVisible = contentEl.style.visibility;
-        const wasPointerEvents = contentEl.style.pointerEvents;
-        const wasPosition = contentEl.style.position;
-        const wasHeight = contentEl.style.height;
+  const contentEl = navEl.querySelector('.card-nav-content') as HTMLElement | null;
+  if (!contentEl) return 260;
 
-        contentEl.style.visibility = 'visible';
-        contentEl.style.pointerEvents = 'auto';
-        contentEl.style.position = 'static';
-        contentEl.style.height = 'auto';
+  const wasVisible = contentEl.style.visibility;
+  const wasPointerEvents = contentEl.style.pointerEvents;
+  const wasPosition = contentEl.style.position;
+  const wasHeight = contentEl.style.height;
 
-        contentEl.offsetHeight;
+  contentEl.style.visibility = 'visible';
+  contentEl.style.pointerEvents = 'auto';
+  contentEl.style.position = 'static';
+  contentEl.style.height = 'auto';
 
-        const topBar = 60;
-        const padding = 16;
-        const contentHeight = contentEl.scrollHeight;
+  
+  contentEl.offsetHeight;
 
-        contentEl.style.visibility = wasVisible;
-        contentEl.style.pointerEvents = wasPointerEvents;
-        contentEl.style.position = wasPosition;
-        contentEl.style.height = wasHeight;
+  const topBar = 60;  
+  const padding = 16;    
+  const contentHeight = contentEl.scrollHeight;
 
-        return topBar + contentHeight + padding;
-      }
-    }
-    return 260;
-  };
+  contentEl.style.visibility = wasVisible;
+  contentEl.style.pointerEvents = wasPointerEvents;
+  contentEl.style.position = wasPosition;
+  contentEl.style.height = wasHeight;
+
+  return Math.max(60, topBar + contentHeight + padding);
+};
+
 
   const createTimeline = () => {
     const navEl = navRef.current;
@@ -213,41 +213,45 @@ const CardNav: React.FC<CardNavProps> = ({
             />
           </div>
 
-          <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1">
+          <Link href="/">
+          <div className="logo-container cursor-pointer flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1">
             <img src={typeof logo === "string" ? logo : logo.src} alt={logoAlt} className="logo w-15" />
             <h3 className='font-bold flex flex-col  text-[20px] py-0 text-[#1694CC]'>ETQAN <span className='text-[8px]'>Geoinformatics Systems</span></h3>
-          </div>
+          </div></Link>
 
           <button
             type="button"
-            className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 items-center h-full font-medium cursor-pointer transition-colors duration-300"
+            className="card-nav-cta-button cursor-pointer hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 items-center h-full font-medium transition-colors duration-300"
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
-            Let's Talk
+            <Link href="/contact">Let's Talk</Link>
+            
           </button>
         </div>
-
         <div
           className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-1 ${
             isExpanded ? 'visible pointer-events-auto' : 'invisible pointer-events-none'
           } md:flex-row md:items-end md:gap-3`}
           aria-hidden={!isExpanded}
         >
-          {(items || []).slice(0, 3).map((item, idx) => (
+          {(items || []).slice(0, 4).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card select-none relative flex  flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[50px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="select-none group relative bg-[#1694CC] hover:bg-[#1694CC]/50 duration-200 flex justify-center items-center gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[20px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
               ref={setCardRef(idx)}
-              style={{ backgroundColor: item.bgColor, color: item.textColor }}
+              style={{color: item.textColor }}
             >
-              <div className="nav-card-label font-normal tracking-[-0.5px] text-[18px] md:text-[22px]">
+              <Link href={item.href}>
+              <div className="nav-card-label font-normal  duration-200 group-hover:scale-110 tracking-[-0.5px] text-[20] md:text-3xl rubik">
                 {item.label}
               </div>
-              <div className="nav-card-links mt-0 flex flex-col gap-0.5 ">
+              </Link>
+
+              {/* <div className="nav-card-links mt-0 flex flex-col gap-0.5 bg-amber-50 h-full rounded-2xl ">
                 {item.links?.map((lnk, i) => (
                   <a
                     key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex h-full items-center gap-0.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[14px] md:text-[14px]"
+                    className="nav-card-link inline-flex bg-[#1694CC] rounded-2xl p-2 h-full items-center gap-0.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[14px] md:text-[14px]"
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
                   >
@@ -255,7 +259,8 @@ const CardNav: React.FC<CardNavProps> = ({
                     {lnk.label}
                   </a>
                 ))}
-              </div>
+              </div> */}
+
             </div>
           ))}
         </div>

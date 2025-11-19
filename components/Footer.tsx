@@ -80,7 +80,7 @@ export default function Footer() {
         {/* Social Media  */}
 
         <div className="w-full md:border-e-2 md:w-1/3 h-auto py-8 flex flex-col items-center justify-center gap-4">
-          <h3 className="text-2xl text-[#6CC2EE] mb-3">
+          <h3 className="text-2xl text-[#6CC2EE] font-bold mb-3">
             Our Social Media Platforms
           </h3>
 
@@ -223,13 +223,13 @@ export default function Footer() {
 
         {/* Newsletter  */}
 
-        <div className="w-full md:w-1/3 h-auto p-8 flex flex-col items-center text-center justify-center gap-4">
-          <h3 className="text-[18px]  mb-0 font-bold text-[#6CC2EE] ">
+        <div className="w-full md:w-1/3 h-auto p-8 flex flex-col items-center text-center  justify-center ">
+          <h3 className="text-[18px]   m-0 font-bold text-[#6CC2EE] ">
             Our Vision
           </h3>
-          <p className=" text-[#6CC2EE] text-[13px] ">To lead the geospatial industry with 
+          <p className=" text-[#6CC2EE] text-[13px] mb-5 ">To lead the geospatial industry with 
             innovative, sustainable, and trusted geoinformatics solutions.</p>
-            <h3 className="text-[18px] mb-0 font-bold text-[#6CC2EE] ">
+            <h3 className="text-[18px] m-0 font-bold text-[#6CC2EE] ">
             Our Mission
           </h3>
           <p className=" text-[#6CC2EE] text-[13px] ">To deliver high-quality 
@@ -240,7 +240,7 @@ export default function Footer() {
           
         </div>
       </div>
-      <div className="flex h-5 bg-black text-white justify-center items-center p-10">
+      <div className="flex h-5 bg-black text-white justify-center text-center items-center p-10">
         © 2025 ETQAN Geoinformatics Systems. All rights reserved.
       </div>
     </>

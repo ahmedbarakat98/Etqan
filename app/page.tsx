@@ -68,10 +68,10 @@ export default function Home() {
       </div>
       {/* testimonials */}
       <div className="w-full bg-white py-10 px-4">
-        <h2 className="text-2xl font-bold text-center mb-8 text-[#1694CC]">
+        <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
           Our Core Team
         </h2>
-        <p className="text-center px-10">We have A multidisciplinary team combining strategy, design, and engineering.</p>
+        <p className="text-center text-2xl  px-10">We have A multidisciplinary team combining strategy, design, and engineering.</p>
         <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
 
       </div>
