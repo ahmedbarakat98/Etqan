@@ -1,4 +1,4 @@
-import logo from "../public/colors.1abbc0a68ca086c45298.png";
+import logo from "../public/maps.png";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { items } from "@/components/NavbarItems";
 import TextType from "@/components/TextType";
@@ -39,30 +39,25 @@ export default function Home() {
         <Image src={logo} alt="Logo" className="w-full mx-auto mb-4" />
         </div>
         <div className="md:w-3/4 w-full flex flex-col p-12 ">
-          <h2 className="mb-3 font-bold text-2xl text-[#1694CC]">Who We Are ?</h2>
+          <h2 className="mb-3 font-bold text-2xl text-[#1694CC]">HOW CAN WE UES GIS OPEN-SOURCE IN BUSINESS?</h2>
           <p className="mb-3">
-            Etqan for Geoinformatics Systems and Solutions is a leading
-            specialized company that provides spatial systems and solutions,
-            geospatial services, and geoinformatics. With a remarkable track
-            record of major projects and collaborations with prominent
-            international organizations, Etqan has established itself as a
-            trusted partner in delivering innovative and sustainable geospatial
-            solutions.
+            GIS has become a vital tool across modern industries, 
+            extending far beyond traditional mapping. With advanced
+           real-time geospatial technologies, organizations in both 
+           the public and private sectors increasingly rely on GIS to
+            enhance planning, operations, and decision-making.
           </p>
           <p className="mb-3">
-            Our collaboration with UNICEF in Yemen stands as a testament to our
-            expertise. We have successfully provided innovative spatial
-            solutions and geospatial consultations in various projects,
-            including areas such as 22 May and Al-Salakhana. These initiatives
-            have contributed to enhancing the understanding of spatial dynamics
-            and supporting effective decision-making.
+            Etqan delivers these capabilities by providing integrated GIS 
+            solutions for municipalities, utilities, telecommunications, 
+            engineering firms, and retail companies.We support telecom 
+            operators with accurate site-selection and network-coverage 
+            analysis, and assist retail businesses in optimizing product 
+            distribution, understanding regional demand, and improving supply-chain efficiency.
           </p>
           <p>
-            Excitingly, we are currently preparing for a new cooperation
-            framework with the FAO, which will be announced in the near future.
-            This partnership will further strengthen our commitment to
-            delivering cutting-edge spatial solutions and advancing
-            geoinformatics practices.
+            With strong technical expertise and global partnerships, Etqan empowers clients with
+             precise, reliable, and innovative geospatial solutions.
           </p>
         </div>
       </div>

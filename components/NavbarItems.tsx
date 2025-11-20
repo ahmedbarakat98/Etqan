@@ -1,27 +1,9 @@
 import type { CardNavItem } from "@/components/CardNav";
 
 const items: CardNavItem[] = [
+  
   {
-    label: "Home",
-    bgColor: "#1694CC",
-    textColor: "#ffffff",
-    href: "/",
-    links: [
-      {
-        label: "Home",
-        href: "#contact",
-        ariaLabel: "Go to contact section",
-      },
-      {
-        label: "Get in touch",
-        href: "#contact",
-        ariaLabel: "Go to contact section",
-      },
-      
-    ],
-  },
-  {
-    label: "Services",
+    label: "Industries",
     bgColor: "#1694CC",
     textColor: "#ffffff",
     href: "/services",
@@ -50,7 +32,96 @@ const items: CardNavItem[] = [
   },
   
   {
-    label: "Projects",
+    label: "Services",
+    bgColor: "#1694CC",
+    textColor: "#ffffff",
+    href: "/projects",
+    links: [
+      {
+        label: "Projects",
+        href: "#about",
+        ariaLabel: "Go to about us section",
+      },
+      {
+        label: "Trainings",
+        href: "#about",
+        ariaLabel: "Go to about us section",
+      },
+      {
+        label: "Partners",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
+      {
+        label: "Carrers",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
+    ],
+  },
+  
+  
+  {
+    label: "Technologies",
+    bgColor: "#1694CC",
+    textColor: "#ffffff",
+    href: "/projects",
+    links: [
+      {
+        label: "Projects",
+        href: "#about",
+        ariaLabel: "Go to about us section",
+      },
+      {
+        label: "Trainings",
+        href: "#about",
+        ariaLabel: "Go to about us section",
+      },
+      {
+        label: "Partners",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
+      {
+        label: "Carrers",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
+    ],
+  },
+  
+  
+  {
+    label: "Partners",
+    bgColor: "#1694CC",
+    textColor: "#ffffff",
+    href: "/projects",
+    links: [
+      {
+        label: "Projects",
+        href: "#about",
+        ariaLabel: "Go to about us section",
+      },
+      {
+        label: "Trainings",
+        href: "#about",
+        ariaLabel: "Go to about us section",
+      },
+      {
+        label: "Partners",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
+      {
+        label: "Carrers",
+        href: "#contact",
+        ariaLabel: "Go to contact section",
+      },
+    ],
+  },
+  
+  {
+    label: "About",
     bgColor: "#1694CC",
     textColor: "#ffffff",
     href: "/projects",

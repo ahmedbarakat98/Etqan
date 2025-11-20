@@ -37,7 +37,7 @@ const CardNav: React.FC<CardNavProps> = ({
   logo,
   logoAlt = 'Logo',
   items,
-  className = '',
+  className = ' min-h-fit',
   ease = 'power3.out',
   baseColor = '#fff',
   menuColor,
@@ -55,6 +55,11 @@ const CardNav: React.FC<CardNavProps> = ({
     function handleScroll() {
       if (window.scrollY > window.innerHeight - 50) {
         setIsFixed(true);  
+        setIsHamburgerOpen(false);
+        setIsExpanded(false);
+        if (tlRef.current) {
+          tlRef.current.reverse();
+        }
       } else {
         setIsFixed(false); 
       }
@@ -69,10 +74,10 @@ const CardNav: React.FC<CardNavProps> = ({
 
   const calculateHeight = () => {
   const navEl = navRef.current;
-  if (!navEl) return 260;
+  if (!navEl) return 270;
 
   const contentEl = navEl.querySelector('.card-nav-content') as HTMLElement | null;
-  if (!contentEl) return 260;
+  if (!contentEl) return 270;
 
   const wasVisible = contentEl.style.visibility;
   const wasPointerEvents = contentEl.style.pointerEvents;
@@ -82,13 +87,13 @@ const CardNav: React.FC<CardNavProps> = ({
   contentEl.style.visibility = 'visible';
   contentEl.style.pointerEvents = 'auto';
   contentEl.style.position = 'static';
-  contentEl.style.height = 'auto';
+  contentEl.style.height = 'fit-content';
 
   
   contentEl.offsetHeight;
 
   const topBar = 60;  
-  const padding = 16;    
+  const padding = 12;    
   const contentHeight = contentEl.scrollHeight;
 
   contentEl.style.visibility = wasVisible;
@@ -96,7 +101,7 @@ const CardNav: React.FC<CardNavProps> = ({
   contentEl.style.position = wasPosition;
   contentEl.style.height = wasHeight;
 
-  return Math.max(60, topBar + contentHeight + padding);
+  return Math.max(20, topBar + contentHeight + padding);
 };
 
 
@@ -105,7 +110,7 @@ const CardNav: React.FC<CardNavProps> = ({
     if (!navEl) return null;
 
     gsap.set(navEl, { height: 60, overflow: 'hidden' });
-    gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+    gsap.set(cardsRef.current, { y: 5 , opacity: 0 });
 
     const tl = gsap.timeline({ paused: true });
 
@@ -234,15 +239,15 @@ const CardNav: React.FC<CardNavProps> = ({
           } md:flex-row md:items-end md:gap-3`}
           aria-hidden={!isExpanded}
         >
-          {(items || []).slice(0, 4).map((item, idx) => (
+          {(items || []).slice(0, 6).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="select-none group relative bg-[#1694CC] hover:bg-[#1694CC]/50 duration-200 flex justify-center items-center gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[20px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="select-none group relative bg-[#1694CC] hover:bg-blue-50 hover:border-2 hover:border-[#1694CC] hover:shadow-2xl duration-200 flex justify-center items-center gap-2 p-[8px_10px] md:p-[10px_12px] h-full rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto  md:min-h-0 md:flex-[1_1_0%]"
               ref={setCardRef(idx)}
               style={{color: item.textColor }}
             >
               <Link href={item.href}>
-              <div className="nav-card-label font-normal  duration-200 group-hover:scale-110 tracking-[-0.5px] text-[20] md:text-3xl rubik">
+              <div className="nav-card-label font-normal  duration-200 group-hover:scale-110 group-hover:text-[#1694CC] tracking-[-0.5px] text-[15px] md:text-[16px] rubik">
                 {item.label}
               </div>
               </Link>
