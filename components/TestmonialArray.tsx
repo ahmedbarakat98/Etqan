@@ -1,16 +1,22 @@
 
 const testimonials = [
   {
-    quote: "This is an amazing service, highly recommended.",
-    name: "Kareem Shehata",
-    designation: "CEO, Tech Solutions",
-    src: "/kareem.png"
+    quote: "GIG company is mainly concerned with the innovative geospatial solutions that are integrated with new innovative technologies",
+    name: "GIG",
+    designation: "Globe imagine for Geoinformatics",
+    src: "/gig.jpeg"
   },
   {
-    quote: `He possesses strong spatial analysis skills and is a smart web developer with the ability to build efficient, user-focused digital solutions. In addition, he has hands-on experience in data analysis, enabling him to interpret complex datasets and transform them into actionable insights.`,
-    name: "Ahmed Barakat",
-    designation: "Software Developer",
-    src: "/ana.png"
+    quote: `The Tunisian Association for Digital Geographic Information a scientific association founded in Tunisia in 2005.`,
+    name: "ATIGN",
+    designation: "The Tunisian Association of the Digital Geographic Information",
+    src: "/tunis.png"
+  },
+  {
+    quote: `Al-Abd company specializing in emerging contracting is considered one of the leading companies in the field of contracting, as evidenced by its long track record of experience since the establishment of the company.`,
+    name: "El-Abd",
+    designation: "El-Abd Egyptian Contracting Company",
+    src: "/alabd.png"
   },
 ];
 export default testimonials;

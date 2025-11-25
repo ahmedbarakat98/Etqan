@@ -221,13 +221,12 @@ const CardNav: React.FC<CardNavProps> = ({
           <Link href="/">
           <div className="logo-container cursor-pointer flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1">
             <img src={typeof logo === "string" ? logo : logo.src} alt={logoAlt} className="logo w-15" />
-            <h3 className='font-bold flex flex-col  text-[20px] py-0 text-[#1694CC]'>ETQAN <span className='text-[8px]'>Geoinformatics Systems</span></h3>
+            <h3 className='font-bold flex flex-col md:text-center  text-[20px] py-0 text-[#1694CC]'>ETQAN <span className='text-[8px]'>Geoinformatics Systems</span></h3>
           </div></Link>
 
           <button
             type="button"
-            className="card-nav-cta-button cursor-pointer hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 items-center h-full font-medium transition-colors duration-300"
-            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+            className="card-nav-cta-button cursor-pointer hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 bg-[#1694CC] text-white hover:bg-white border-2 border-white hover:border-[#1694CC] hover:text-[#1694CC] items-center h-full font-medium transition-colors duration-300"
           >
             <Link href="/contact">Let's Talk</Link>
             
@@ -242,7 +241,7 @@ const CardNav: React.FC<CardNavProps> = ({
           {(items || []).slice(0, 6).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="select-none group relative bg-[#1694CC] hover:bg-blue-50 hover:border-2 hover:border-[#1694CC] hover:shadow-2xl duration-200 flex justify-center items-center gap-2 p-[8px_10px] md:p-[10px_12px] h-full rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto  md:min-h-0 md:flex-[1_1_0%]"
+              className="select-none group relative text-center bg-[#1694CC] hover:bg-blue-50 hover:border-2 hover:border-[#1694CC] hover:shadow-2xl duration-200 flex justify-center items-center gap-2 p-[8px_10px] md:p-[10px_14px] h-full rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto  md:min-h-0 md:flex-[1_1_0%]"
               ref={setCardRef(idx)}
               style={{color: item.textColor }}
             >
@@ -251,20 +250,6 @@ const CardNav: React.FC<CardNavProps> = ({
                 {item.label}
               </div>
               </Link>
-
-              {/* <div className="nav-card-links mt-0 flex flex-col gap-0.5 bg-amber-50 h-full rounded-2xl ">
-                {item.links?.map((lnk, i) => (
-                  <a
-                    key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex bg-[#1694CC] rounded-2xl p-2 h-full items-center gap-0.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[14px] md:text-[14px]"
-                    href={lnk.href}
-                    aria-label={lnk.ariaLabel}
-                  >
-                    <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />
-                    {lnk.label}
-                  </a>
-                ))}
-              </div> */}
 
             </div>
           ))}

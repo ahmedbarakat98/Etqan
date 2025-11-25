@@ -6,7 +6,7 @@ const items: CardNavItem[] = [
     label: "Industries",
     bgColor: "#1694CC",
     textColor: "#ffffff",
-    href: "/services",
+    href: "/industries",
     links: [
       {
         label: "Geoinformatics Data Services",
@@ -35,7 +35,7 @@ const items: CardNavItem[] = [
     label: "Services",
     bgColor: "#1694CC",
     textColor: "#ffffff",
-    href: "/projects",
+    href: "/services",
     links: [
       {
         label: "Projects",
@@ -65,7 +65,7 @@ const items: CardNavItem[] = [
     label: "Technologies",
     bgColor: "#1694CC",
     textColor: "#ffffff",
-    href: "/projects",
+    href: "/technologies",
     links: [
       {
         label: "Projects",
@@ -92,10 +92,10 @@ const items: CardNavItem[] = [
   
   
   {
-    label: "Partners",
+    label: "Training & Careers",
     bgColor: "#1694CC",
     textColor: "#ffffff",
-    href: "/projects",
+    href: "/training",
     links: [
       {
         label: "Projects",
@@ -124,7 +124,7 @@ const items: CardNavItem[] = [
     label: "About",
     bgColor: "#1694CC",
     textColor: "#ffffff",
-    href: "/projects",
+    href: "/about",
     links: [
       {
         label: "Projects",
