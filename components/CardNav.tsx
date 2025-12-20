@@ -241,12 +241,12 @@ const CardNav: React.FC<CardNavProps> = ({
           {(items || []).slice(0, 6).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="select-none group relative text-center bg-[#1694CC] hover:bg-blue-50 hover:border-2 hover:border-[#1694CC] hover:shadow-2xl duration-200 flex justify-center items-center gap-2 p-[8px_10px] md:p-[10px_14px] h-full rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto  md:min-h-0 md:flex-[1_1_0%]"
+              className="select-none group relative text-center bg-[#1694CC] hover:bg-blue-50 hover:border-2 hover:border-[#1694CC] hover:shadow-2xl duration-200 flex justify-center items-center gap-2 p-[8px_10px] md:p-[10px_14px] h-full rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] md:min-h-0 md:flex-[1_1_0%]"
               ref={setCardRef(idx)}
               style={{color: item.textColor }}
             >
-              <Link href={item.href}>
-              <div className="nav-card-label font-normal  duration-200 group-hover:scale-110 group-hover:text-[#1694CC] tracking-[-0.5px] text-[15px] md:text-[16px] rubik">
+              <Link href={item.href} className='w-full h-full flex justify-center items-center'>
+              <div className="nav-card-label  font-normal  duration-200 group-hover:scale-110 group-hover:text-[#1694CC] tracking-[-0.5px] text-[15px] md:text-[16px] rubik">
                 {item.label}
               </div>
               </Link>

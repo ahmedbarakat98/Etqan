@@ -135,6 +135,18 @@
   font-style: normal;
   font-weight: 400;
 }
+.reveal {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: 0.6s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
 
 
 
