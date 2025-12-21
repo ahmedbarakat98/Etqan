@@ -22,7 +22,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 flex h-full items-center justify-center text-white">
-          <h1 className="text-3xl text-center rubik px-50 md:text-4xl lg:text-5xl font-bold">
+          <h1 className="text-2xl text-center rubik px-50 md:px-70 md:text-3xl font-bold">
             <TextType
               text={
                 "Geoinformatics Systems for a Dynamic World Power Your Vision with Etqan"
