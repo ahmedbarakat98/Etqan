@@ -12,6 +12,10 @@ export default function Home() {
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       {/* hero section */}
       <div className="w-full h-screen">
+        <Snowfall
+          color="#fff"
+          snowflakeCount={200}
+        ></Snowfall>
         <video
           autoPlay
           loop

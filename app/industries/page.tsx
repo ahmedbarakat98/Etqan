@@ -1,4 +1,5 @@
-import Reveal from "@/components/Reveal";
+
+import RevealScale from "@/components/RevealScale";
 import TextType from "@/components/TextType";
 import Image from "next/image";
 import React from "react";
@@ -7,7 +8,7 @@ export default function page() {
   return (
     <>
     
-    <Reveal>
+    <RevealScale>
       <div className="w-full h-screen">
         <Image
           width={1000}
@@ -25,7 +26,7 @@ export default function page() {
           </h1>
         </div>
       </div>
-      </Reveal>
+      </RevealScale>
     </>
   );
 }

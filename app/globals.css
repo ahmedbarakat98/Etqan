@@ -140,14 +140,21 @@
   transform: translateX(40px);
   transition: 0.6s ease;
 }
+.revealScale {
+  opacity: 0;
+  transform: opacity(0);;
+  transition: 0.8s ease;
+}
+
 
 .reveal.show {
   opacity: 1;
   transform: translateX(0);
 }
 
-
-
-
+.revealScale.show {
+  opacity: 1;
+  transform: opacity(1);
+}
 
 
