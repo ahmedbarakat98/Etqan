@@ -5,12 +5,12 @@ import TextType from "@/components/TextType";
 import Image from "next/image";
 import testimonials from "@/components/TestmonialArray";
 import Reveal from "@/components/Reveal";
+import Snowfall from "react-snowfall";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       {/* hero section */}
-
       <div className="w-full h-screen">
         <video
           autoPlay
@@ -34,6 +34,10 @@ export default function Home() {
             />
           </h1>
         </div>
+        <Snowfall
+          color="#fff"
+          snowflakeCount={200}
+        ></Snowfall>
       </div>
 
       {/* how we are */}
@@ -72,21 +76,18 @@ export default function Home() {
       </Reveal>
       {/* testimonials */}
       <Reveal>
-      <div className=" bg-gray-50 w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
-        <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
-          Our Partners
-        </h2>
-        <p className="text-center text-2xl  px-10">
-          We have A multidisciplinary team combining strategy, design, and
-          engineering.
-        </p>
-        <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
-      </div>
+        <div className=" bg-gray-50 w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
+          <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
+            Our Partners
+          </h2>
+          <p className="text-center text-2xl  px-10">
+            We have A multidisciplinary team combining strategy, design, and
+            engineering.
+          </p>
+          <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+        </div>
       </Reveal>
       {/* our partners  */}
-      <div className="bg-gray-200 w-full py-10 flex flex-col justify-center items-center px-4"></div>
     </div>
   );
 }
-
-

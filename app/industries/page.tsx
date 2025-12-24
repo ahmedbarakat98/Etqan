@@ -6,6 +6,7 @@ import React from "react";
 export default function page() {
   return (
     <>
+    
     <Reveal>
       <div className="w-full h-screen">
         <Image
