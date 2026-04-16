@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { Playfair_Display, Rubik } from "next/font/google";
+import "./globals.css";
 import ClientLayout from "./ClientLayout";
 import CardNav from "@/components/CardNav";
 import logo from "../public/icon.png";
 import { items } from "@/components/NavbarItems";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 
 const geistSans = Geist({
@@ -48,17 +49,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${playfair.variable} ${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <ClientLayout>
-          <CardNav
-            logo={logo}
-            logoAlt="Company Logo"
-            items={items}
-            baseColor="#fff"
-            className=""
-            menuColor="#000"
-            buttonBgColor="#1694CC"
-            buttonTextColor="#fff"
-            ease="power3.out"
-          />
+          <Navbar />
           {children}
           <Footer />
         </ClientLayout>

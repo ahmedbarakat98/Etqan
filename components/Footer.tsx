@@ -6,7 +6,7 @@ export default function Footer() {
     <>
       <div className="flex bg-[#0C1D33] flex-col md:flex-row p-5">
         {/* get in touch  */}
-        <div className="md:w-1/3 w-full px-20 flex justify-center md:border-e-2 items-start flex-col">
+        <div className="md:w-1/3 w-full border-black px-20 flex justify-center md:border-e-2 items-start flex-col">
           <div className="w-full mb-2 flex justify-start items-center">
             <Image
               src={logo}
@@ -79,7 +79,7 @@ export default function Footer() {
 
         {/* Social Media  */}
 
-        <div className="w-full md:border-e-2 md:w-1/3 h-auto py-8 flex flex-col items-center justify-center gap-4">
+        <div className="w-full md:border-e-2 border-black md:w-1/3 h-auto py-8 flex flex-col items-center justify-center gap-4">
           <h3 className="text-2xl text-[#6CC2EE] font-bold mb-3">
             Our Social Media Platforms
           </h3>

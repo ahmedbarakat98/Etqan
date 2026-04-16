@@ -1,29 +1,52 @@
 "use client";
 import logo from "../public/maps.png";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import TextType from "@/components/TextType";
 import Image from "next/image";
-import testimonials from "@/components/TestmonialArray";
 import Reveal from "@/components/Reveal";
 import Snowfall from "react-snowfall";
+import DomeGallery from "@/components/DomeGallery";
+import InfiniteGallery  from "@/components/ui/3d-gallery-photography";
+
 
 export default function Home() {
+  const sampleImages = [
+		{ src: '/ana.png', alt: 'Image 1' },
+		{ src: '/file.svg', alt: 'Image 2' },
+		{ src: '/tech.jpg', alt: 'Image 1' },
+		{ src: 'https://images.unsplash.com/photo-1754769440490-2eb64d715775?q=80&w=1113&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Image 2' },
+		{ src: 'https://images.unsplash.com/photo-1758640920659-0bb864175983?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzNHx8fGVufDB8fHx8fA%3D%3D', alt: 'Image 3' },
+	];
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">
       {/* hero section */}
-      <div className="w-full h-screen">
-        <Snowfall
-          color="#fff"
+      {/* <Image
+        src={bg}
+        alt="background Image"
+        className="absolute inset-0 w-full h-full object-cover"
+      /> */}
+
+      <InfiniteGallery
+				images={sampleImages}
+				speed={1.2}
+				zSpacing={3}
+				visibleCount={12}
+				falloff={{ near: 0.8, far: 14 }}
+				className="h-screen w-full rounded-lg overflow-hidden"
+			/>
+			<div className="absolute inset-0 flex items-center justify-center text-center px-3 mix-blend-exclusion text-white">
+				<h1 className="font-serif text-3xl md:text-5xl md:px-15 tracking-tight">
+					<span >Geoinformatics Systems for a Dynamic World Power Your Vision with Etqan</span>
+				</h1>
+			</div>
+       <Snowfall
+          color="#FFF"
           snowflakeCount={200}
+          speed={[0.5, 2]}
+          wind={[-0.5, 2]}
         ></Snowfall>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/hero.mp4"
-        />
+
+      {/* <div className="w-full h-screen">
+       
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 flex h-full items-center justify-center text-white">
           <h1 className="text-2xl text-center rubik px-50 md:px-70 md:text-3xl font-bold">
@@ -38,60 +61,69 @@ export default function Home() {
             />
           </h1>
         </div>
-        <Snowfall
-          color="#fff"
-          snowflakeCount={200}
-        ></Snowfall>
-      </div>
+      </div> */}
 
       {/* how we are */}
       <Reveal>
-        <div className="w-full bg-gray-50 relative flex md:flex-row flex-col items-center justify-center py-10 px-4 ">
+        <div className="w-full bg-black relative flex md:flex-row flex-col items-center justify-center py-10 px-4 ">
           <div className="w-full md:w-1/4 ">
             <Image src={logo} alt="Logo" className="w-full mx-auto mb-4" />
           </div>
           <div className="md:w-3/4 w-full flex flex-col p-12 ">
             <h2 className="mb-3 font-bold text-2xl text-[#1694CC]">
-              HOW CAN WE UES GIS OPEN-SOURCE IN BUSINESS?
+              Etqan for Geoinformatics Systems and Solutions
             </h2>
-            <p className="mb-3">
-              GIS has become a vital tool across modern industries, extending
-              far beyond traditional mapping. With advanced real-time geospatial
-              technologies, organizations in both the public and private sectors
-              increasingly rely on GIS to enhance planning, operations, and
-              decision-making.
+            <p className="mb-3 text-amber-50">
+              Empowering Digital Transformation Through Geospatial Intelligence
+              We deliver integrated geospatial systems, smart solutions, and
+              large-scale digital transformation projects that enable
+              governments, enterprises, and organizations to turn spatial data
+              into actionable intelligence.
             </p>
-            <p className="mb-3">
-              Etqan delivers these capabilities by providing integrated GIS
-              solutions for municipalities, utilities, telecommunications,
-              engineering firms, and retail companies.We support telecom
-              operators with accurate site-selection and network-coverage
-              analysis, and assist retail businesses in optimizing product
-              distribution, understanding regional demand, and improving
-              supply-chain efficiency.
+            <p className="mb-3 text-amber-50">
+              From GIS and urban planning to Digital Twin, AI, BIM Integration,
+              and GeoAI, we build solutions that drive smarter decisions and
+              real-world impact. Trusted by leading international organizations
+              and government entities worldwide.
             </p>
-            <p>
-              With strong technical expertise and global partnerships, Etqan
-              empowers clients with precise, reliable, and innovative geospatial
-              solutions.
+            <h2 className="m-3 font-bold text-2xl text-[#1694CC]">
+              Who We Are ?
+            </h2>
+            <p className="mb-3 text-amber-50">
+              Etqan is a specialized geoinformatics company delivering
+              end-to-end geospatial systems, consulting services, and
+              intelligent solutions. We are not just a GIS provider — we are a
+              strategic partner in spatial digital transformation, helping
+              organizations optimize infrastructure, planning, and
+              decision-making through advanced geospatial technologies.
             </p>
           </div>
         </div>
       </Reveal>
       {/* testimonials */}
       <Reveal>
-        <div className=" bg-gray-50 w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
+        <div className="  w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
           <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
             Our Partners
           </h2>
-          <p className="text-center text-2xl  px-10">
+          <p className="text-center text-2xl text-amber-50  px-10">
             We have A multidisciplinary team combining strategy, design, and
             engineering.
           </p>
-          <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+          
+      {/* our partners  */}
+          <div style={{ width: "95vw", height: "100vh" }}>
+            <DomeGallery
+              fit={0.9}
+              minRadius={600}
+              maxVerticalRotationDeg={12}
+              segments={34}
+              dragDampening={1.2}
+              grayscale
+            />
+          </div>
         </div>
       </Reveal>
-      {/* our partners  */}
     </div>
   );
 }
