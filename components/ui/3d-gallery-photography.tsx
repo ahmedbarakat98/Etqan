@@ -466,9 +466,10 @@ function GalleryScene({
 
         // Calculate scale to maintain aspect ratio
         const img = texture.image as HTMLImageElement | undefined;
+		const aspect = 1;
 
-        const aspect =
-          img && img.width && img.height ? img.width / img.height : 1;
+        // const aspect =
+        //   img && img.width && img.height ? img.width / img.height : 1;
 
         const scale: [number, number, number] =
           aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
