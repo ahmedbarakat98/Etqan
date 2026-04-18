@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${playfair.variable} ${rubik.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} bg-black ${playfair.variable} ${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <ClientLayout>
           <Navbar />

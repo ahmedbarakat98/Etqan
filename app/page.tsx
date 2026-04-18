@@ -6,24 +6,19 @@ import Reveal from "@/components/Reveal";
 import Snowfall from "react-snowfall";
 import DomeGallery from "@/components/DomeGallery";
 import InfiniteGallery  from "@/components/ui/3d-gallery-photography";
+import OrbitingSkills from "@/components/ui/orbiting-skills";
+import ServicesSection from "@/components/services-section";
 
 
 export default function Home() {
   const sampleImages = [
-		{ src: '/ana.png', alt: 'Image 1' },
-		{ src: '/file.svg', alt: 'Image 2' },
-		{ src: '/tech.jpg', alt: 'Image 1' },
-		{ src: 'https://images.unsplash.com/photo-1754769440490-2eb64d715775?q=80&w=1113&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Image 2' },
-		{ src: 'https://images.unsplash.com/photo-1758640920659-0bb864175983?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzNHx8fGVufDB8fHx8fA%3D%3D', alt: 'Image 3' },
-	];
+		{ src: '/training.jpg', alt: 'Arjaa' },
+		{ src: '/tech.jpg', alt: 'Bazooka' },
+		{ src: '/industries.jpg', alt: 'Dubai' },
+  	];
   return (
     <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">
       {/* hero section */}
-      {/* <Image
-        src={bg}
-        alt="background Image"
-        className="absolute inset-0 w-full h-full object-cover"
-      /> */}
 
       <InfiniteGallery
 				images={sampleImages}
@@ -38,30 +33,14 @@ export default function Home() {
 					<span >Geoinformatics Systems for a Dynamic World Power Your Vision with Etqan</span>
 				</h1>
 			</div>
-       <Snowfall
+       {/* <Snowfall
           color="#FFF"
           snowflakeCount={200}
           speed={[0.5, 2]}
           wind={[-0.5, 2]}
-        ></Snowfall>
+        ></Snowfall> */}
 
-      {/* <div className="w-full h-screen">
-       
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex h-full items-center justify-center text-white">
-          <h1 className="text-2xl text-center rubik px-50 md:px-70 md:text-3xl font-bold">
-            <TextType
-              text={
-                "Geoinformatics Systems for a Dynamic World Power Your Vision with Etqan"
-              }
-              typingSpeed={80}
-              pauseDuration={3000}
-              showCursor={true}
-              cursorCharacter="_"
-            />
-          </h1>
-        </div>
-      </div> */}
+      
 
       {/* how we are */}
       <Reveal>
@@ -100,15 +79,30 @@ export default function Home() {
           </div>
         </div>
       </Reveal>
+      {/* what we do */}
+      <Reveal>
+        <div className="  w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
+          <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
+            What We Do 
+          </h2>
+          <p className="text-center text-2xl text-amber-50  px-10">
+            We provide a full spectrum of geospatial solutions:
+          </p>
+          
+      {/* our partners  */}
+          <div className="md:h-screen w-full">
+            <ServicesSection />
+          </div>
+        </div>
+      </Reveal>
       {/* testimonials */}
       <Reveal>
         <div className="  w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
           <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
-            Our Partners
+            Clients and Partners
           </h2>
           <p className="text-center text-2xl text-amber-50  px-10">
-            We have A multidisciplinary team combining strategy, design, and
-            engineering.
+            Trusted by leading organizations:
           </p>
           
       {/* our partners  */}
@@ -124,6 +118,7 @@ export default function Home() {
           </div>
         </div>
       </Reveal>
+      
     </div>
   );
 }

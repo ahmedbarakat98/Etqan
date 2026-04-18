@@ -57,12 +57,11 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between px-8 py-5 border-b border-sky-500/10">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            {/* <div className="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-300 font-bold"> */}
             <Image
               src={logo}
               alt="Logo"
-              width={100}
-              height={100}
+              width={150}
+              height={150}
               className="w-13"
             />
             {/* </div> */}
@@ -73,7 +72,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Links */}
-          <div className="hidden md:flex px-4 items-center gap-8 text-slate-200 text-md">
+          <div className="hidden md:flex px-4 items-center gap-8 text-slate-200 text-md font-bold">
             <Link href="/" className="cursor-pointer hover:text-sky-300">
               Home
             </Link>
