@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../public/icon.png";
 import Link from "next/link";
 import StaggeredMenu from "./StaggeredMenu";
+import { usePathname } from 'next/navigation'
 
 const menuItems = [
   { label: "Home", ariaLabel: "Go to home page", link: "/" },
@@ -24,6 +25,7 @@ const Navbar: React.FC = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,27 +75,27 @@ const Navbar: React.FC = () => {
 
           {/* Links */}
           <div className="hidden md:flex px-4 items-center gap-8 text-slate-200 text-md font-bold">
-            <Link href="/" className="cursor-pointer hover:text-sky-300">
+            <Link href="/" className={`cursor-pointer ${pathname === '/' ? 'active' : ''} hover:text-sky-300`}>
               Home
             </Link>
             <Link
               href="/etqan-academy"
-              className="cursor-pointer hover:text-sky-300"
+              className={`cursor-pointer ${pathname === '/etqan-academy' ? 'active' : ''} hover:text-sky-300`}
             >
               ETQAN Academy
             </Link>
             <Link
               href="/Products"
-              className="cursor-pointer hover:text-sky-300"
+              className={`cursor-pointer ${pathname === '/Products' ? 'active' : ''} hover:text-sky-300`}
             >
               Products
             </Link>
-            <Link href="/about" className="cursor-pointer hover:text-sky-300">
+            <Link href="/about" className={`cursor-pointer ${pathname === '/about' ? 'active' : ''} hover:text-sky-300`}>
               About
             </Link>
             <Link
-              href="/Services"
-              className="cursor-pointer hover:text-sky-300"
+              href="/services"
+              className={`cursor-pointer ${pathname === '/services' ? 'active' : ''} hover:text-sky-300`}
             >
               Services
             </Link>
@@ -120,7 +122,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Button */}
-          <button className="bg-sky-500 hidden md:flex md:text-sm hover:bg-sky-300 text-slate-950 font-semibold px-5 py-2.5 rounded-xl transition">
+          <button className="bg-sky-500 hidden md:flex md:text-sm hover:bg-sky-300 text-white font-semibold px-5 py-2.5 rounded-xl transition">
             Get Started
           </button>
         </div>

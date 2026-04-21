@@ -8,6 +8,7 @@ import logo from "../public/icon.png";
 import { items } from "@/components/NavbarItems";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "./theme-provider";
 
 
 const geistSans = Geist({
@@ -48,11 +49,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} bg-black ${playfair.variable} ${rubik.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <ClientLayout>
           <Navbar />
           {children}
           <Footer />
         </ClientLayout>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,46 +1,234 @@
 "use client";
 import logo from "../public/maps.png";
 import TextType from "@/components/TextType";
+import {
+  Map,
+  MapControls,
+  MapMarker,
+  MarkerContent,
+  MarkerLabel,
+  MarkerPopup,
+} from "@/components/ui/map";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Snowfall from "react-snowfall";
 import DomeGallery from "@/components/DomeGallery";
-import InfiniteGallery  from "@/components/ui/3d-gallery-photography";
-import OrbitingSkills from "@/components/ui/orbiting-skills";
+import InfiniteGallery from "@/components/ui/3d-gallery-photography";
 import ServicesSection from "@/components/services-section";
 
-
 export default function Home() {
+  const places = [
+  {
+    id: 1,
+    name: "Cairo University",
+    label: "Public",
+    category: "Public University",
+    image:
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop",
+    lng: 31.2086,
+    lat: 30.0275,
+  },
+  {
+    id: 2,
+    name: "Ain Shams University",
+    label: "Public",
+    category: "Public University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=200&fit=crop",
+    lng: 31.2838,
+    lat: 30.0774,
+  },
+  {
+    id: 3,
+    name: "The American University in Cairo",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
+    lng: 31.4907,
+    lat: 29.9869,
+  },
+  {
+    id: 4,
+    name: "Helwan University",
+    label: "Public",
+    category: "Public University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=200&fit=crop",
+    lng: 31.3144,
+    lat: 29.8652,
+  },
+  {
+    id: 5,
+    name: "German University in Cairo",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=300&h=200&fit=crop",
+    lng: 31.5055,
+    lat: 30.0186,
+  },
+  {
+    id: 6,
+    name: "Future University in Egypt",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=300&h=200&fit=crop",
+    lng: 31.4917,
+    lat: 29.9850,
+  },
+  {
+    id: 7,
+    name: "The British University in Egypt",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=300&h=200&fit=crop",
+    lng: 31.6294,
+    lat: 30.1412,
+  },
+  {
+    id: 8,
+    name: "Misr International University",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=300&h=200&fit=crop",
+    lng: 31.4658,
+    lat: 30.1453,
+  },
+  {
+    id: 9,
+    name: "MTI University",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=200&fit=crop",
+    lng: 31.3007,
+    lat: 30.0069,
+  },
+  {
+    id: 10,
+    name: "Canadian International College",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=300&h=200&fit=crop",
+    lng: 31.4575,
+    lat: 30.0336,
+  },
+  {
+    id: 11,
+    name: "Nile University",
+    label: "National",
+    category: "National University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop",
+    lng: 30.9720,
+    lat: 30.0715,
+  },
+  {
+    id: 12,
+    name: "MSA University",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?w=300&h=200&fit=crop",
+    lng: 30.9495,
+    lat: 29.9990,
+  },
+  {
+    id: 13,
+    name: "Misr University for Science and Technology",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
+    lng: 30.9685,
+    lat: 29.9757,
+  },
+  {
+    id: 14,
+    name: "October 6 University",
+    label: "Private",
+    category: "Private University",
+    rating: 0,
+    reviews: 0,
+    hours: "Check official site",
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=200&fit=crop",
+    lng: 30.9920,
+    lat: 29.9825,
+  },
+];
   const sampleImages = [
-		{ src: '/training.jpg', alt: 'Arjaa' },
-		{ src: '/tech.jpg', alt: 'Bazooka' },
-		{ src: '/industries.jpg', alt: 'Dubai' },
-  	];
+    { src: "/training.jpg", alt: "Arjaa" },
+    { src: "/tech.jpg", alt: "Bazooka" },
+    { src: "/industries.jpg", alt: "Dubai" },
+  ];
   return (
     <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">
       {/* hero section */}
 
       <InfiniteGallery
-				images={sampleImages}
-				speed={1.2}
-				zSpacing={3}
-				visibleCount={12}
-				falloff={{ near: 0.8, far: 14 }}
-				className="h-screen w-full rounded-lg overflow-hidden"
-			/>
-			<div className="absolute inset-0 flex items-center justify-center text-center px-3 mix-blend-exclusion text-white">
-				<h1 className="font-serif text-3xl md:text-5xl md:px-15 tracking-tight">
-					<span >Geoinformatics Systems for a Dynamic World Power Your Vision with Etqan</span>
-				</h1>
-			</div>
-       {/* <Snowfall
+        images={sampleImages}
+        speed={1.2}
+        zSpacing={3}
+        visibleCount={12}
+        falloff={{ near: 0.8, far: 14 }}
+        className="h-screen w-full rounded-lg overflow-hidden"
+      />
+      <div className="absolute inset-0 flex items-center justify-center text-center px-3 mix-blend-exclusion text-white">
+        <h1 className="font-serif text-3xl md:text-5xl md:px-15 tracking-tight">
+          <span>
+            Geoinformatics Systems for a Dynamic World Power Your Vision with
+            Etqan
+          </span>
+        </h1>
+      </div>
+      {/* <Snowfall
           color="#FFF"
           snowflakeCount={200}
           speed={[0.5, 2]}
           wind={[-0.5, 2]}
         ></Snowfall> */}
-
-      
 
       {/* how we are */}
       <Reveal>
@@ -83,15 +271,79 @@ export default function Home() {
       <Reveal>
         <div className="  w-full relative flex flex-col items-center m-0 justify-center py-10 px-4 ">
           <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
-            What We Do 
+            What We Do
           </h2>
           <p className="text-center text-2xl text-amber-50  px-10">
             We provide a full spectrum of geospatial solutions:
           </p>
-          
-      {/* our partners  */}
+
+          {/* our partners  */}
           <div className="md:h-screen w-full">
             <ServicesSection />
+          </div>
+        </div>
+      </Reveal>
+      {/* Our projects */}
+      <Reveal>
+        <div className=" w-full relative flex flex-col items-center m-0 justify-center py-10 ">
+          <h2 className="text-3xl font-bold text-center mb-4 text-[#1694CC]">
+            Projects
+          </h2>
+          <p className="text-center text-2xl text-amber-50 mb-5 px-10">
+            Trusted by leading organizations:
+          </p>
+
+          {/* our proj  */}
+          <div className="h-[500px] w-full">
+            <Map center={[31.235793830917608 , 30.044337142118394]} zoom={8}>
+              {places.map((place) => (
+                <MapMarker
+                  key={place.id}
+                  longitude={place.lng}
+                  latitude={place.lat}
+                >
+                  <MarkerContent>
+                    <div className="relative flex items-center justify-center">
+                      <span className="absolute inline-flex h-8 w-8 rounded-full bg-sky-400/20 blur-md" />
+                      <div className="relative size-5 rounded-full border-2 border-white/90 bg-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.55)] cursor-pointer transition-all duration-200 hover:scale-110" />
+                    </div>
+                    <MarkerLabel position="bottom">{place.label}</MarkerLabel>
+                  </MarkerContent>
+
+                  <MarkerPopup className="w-50 p-0 overflow-hidden">
+                    <div className="relative h-32 overflow-hidden rounded-t-xl">
+                      <Image
+                        fill
+                        src={place.image}
+                        alt={place.name}
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 from-black/70 via-black/15 to-transparent" />
+                    </div>
+
+                    <div className="space-y-3 p-3">
+                      <div>
+                        <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-sky-300/80">
+                          {place.category}
+                        </span>
+                        <h3 className="leading-tight font-semibold text-white">
+                          {place.name}
+                        </h3>
+                      </div>
+
+
+                    </div>
+                  </MarkerPopup>
+                </MapMarker>
+              ))}
+
+              <MapControls
+                position="bottom-right"
+                showZoom
+                showLocate
+                showFullscreen
+              />
+            </Map>
           </div>
         </div>
       </Reveal>
@@ -104,8 +356,8 @@ export default function Home() {
           <p className="text-center text-2xl text-amber-50  px-10">
             Trusted by leading organizations:
           </p>
-          
-      {/* our partners  */}
+
+          {/* our partners  */}
           <div style={{ width: "95vw", height: "100vh" }}>
             <DomeGallery
               fit={0.9}
@@ -118,7 +370,6 @@ export default function Home() {
           </div>
         </div>
       </Reveal>
-      
     </div>
   );
 }

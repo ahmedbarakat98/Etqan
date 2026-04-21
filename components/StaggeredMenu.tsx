@@ -443,12 +443,12 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   return (
     <div
-      className={`sm-scope z-40 overflow-hidden ${isFixed ? "fixed top-0 left-0 w-screen h-screen overflow-hidden" : "w-10 h-10"}`}
+      className={`sm-scope z-40 overflow-hidden ${isFixed ? "fixed top-0 left-0  w-screen h-screen overflow-hidden" : "w-10 h-10"}`}
     >
       <div
         className={
           (className ? className + " " : "") +
-          "staggered-menu-wrapper pointer-events-none relative w-full h-full z-40"
+          "staggered-menu-wrapper pointer-events-none relative  w-full h-full z-40"
         }
         style={
           accentColor
@@ -460,7 +460,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       >
         <div
           ref={preLayersRef}
-          className="sm-prelayers absolute top-0 right-0 bottom-0 pointer-events-none z-[5]"
+          className="sm-prelayers  absolute top-0 right-0 bottom-0 pointer-events-none z-[5]"
           aria-hidden="true"
         >
           {(() => {
@@ -484,7 +484,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-center p-5 bg-transparent pointer-events-none z-20"
+          className="staggered-menu-header bg-amber-400 absolute top-0 left-0 w-full flex items-center justify-center p-5 bg-transparent pointer-events-none z-20"
           aria-label="Main navigation header"
         >
           <div
@@ -544,11 +544,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px] pointer-events-auto"
+          className="staggered-menu-panel absolute inset-0  h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px] pointer-events-auto"
           style={{ WebkitBackdropFilter: "blur(12px)" }}
           aria-hidden={!open}
         >
-          <div className="sm-panel-inner flex-1 flex flex-col gap-5">
+          <div className="sm-panel-inner flex-1 flex  flex-col gap-5">
             <ul
               className="sm-panel-list list-none m-0 p-0 flex flex-col gap-2"
               role="list"
