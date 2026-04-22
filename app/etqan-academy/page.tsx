@@ -6,7 +6,7 @@ import { FocusRail, type FocusRailItem } from "@/components/ui/focus-rail";
 
 export default function page() {
   
-  const DEMO_ITEMS: FocusRailItem[] = [
+  const ITEMS: FocusRailItem[] = [
   {
     id: 1,
     title: "Geospatial & GIS Engineering",
@@ -114,7 +114,7 @@ export default function page() {
             </p>
           </div>
 
-          <FocusRail items={DEMO_ITEMS} autoPlay={false} loop />
+          <FocusRail items={ITEMS} autoPlay loop interval={2500} />
         </div>
       </div>
     </>

@@ -1,15 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  Pyramid,
-  Castle,
-  Mountain,
-  TowerControl,
-  Building,
-  Landmark,
-} from "lucide-react";
-import { cn } from "@/lib/utils"; 
+import { cn } from "@/lib/utils";
 
 export interface CardItem {
   id: string | number;
@@ -25,110 +17,204 @@ interface ExpandingCardsProps extends React.HTMLAttributes<HTMLUListElement> {
   defaultActiveIndex?: number;
 }
 
-
 export const ExpandingCards = React.forwardRef<
   HTMLUListElement,
   ExpandingCardsProps
 >(({ className, items, defaultActiveIndex = 0, ...props }, ref) => {
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(
-    defaultActiveIndex,
-  );
-  
+  const safeDefaultIndex =
+    items.length === 0
+      ? 0
+      : Math.min(Math.max(defaultActiveIndex, 0), items.length - 1);
+
+  const [activeIndex, setActiveIndex] = React.useState<number>(safeDefaultIndex);
   const [isDesktop, setIsDesktop] = React.useState(false);
 
   React.useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDesktop(e.matches);
     };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    handleChange(mediaQuery);
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    } else {
+      mediaQuery.addListener(handleChange);
+      return () => mediaQuery.removeListener(handleChange);
+    }
   }, []);
 
-  const gridStyle = React.useMemo(() => {
-    if (activeIndex === null) return {};
-    
-    if (isDesktop) {
-      const columns = items
-        .map((_, index) => (index === activeIndex ? "5fr" : "1fr"))
-        .join(" ");
-      return { gridTemplateColumns: columns };
-    } else {
-      const rows = items
-        .map((_, index) => (index === activeIndex ? "5fr" : "1fr"))
-        .join(" ");
-      return { gridTemplateRows: rows };
-    }
-  }, [activeIndex, items.length, isDesktop]);
+  if (!items.length) return null;
 
   const handleInteraction = (index: number) => {
     setActiveIndex(index);
   };
 
+  if (isDesktop) {
+    const desktopGridStyle = {
+      gridTemplateColumns: items
+        .map((_, index) => (index === activeIndex ? "5fr" : "1fr"))
+        .join(" "),
+    };
+
+    return (
+      <ul
+        ref={ref}
+        className={cn(
+          "grid h-[500px] w-full max-w-6xl gap-2",
+          "transition-[grid-template-columns] duration-500 ease-out",
+          className
+        )}
+        style={desktopGridStyle}
+        {...props}
+      >
+        {items.map((item, index) => {
+          const isActive = activeIndex === index;
+
+          return (
+            <li
+              key={item.id}
+              className={cn(
+                "group relative min-w-0 overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm",
+                "cursor-pointer"
+              )}
+              onMouseEnter={() => handleInteraction(index)}
+              onFocus={() => handleInteraction(index)}
+              onClick={() => handleInteraction(index)}
+              tabIndex={0}
+              aria-expanded={isActive}
+            >
+              <img
+                src={item.imgSrc}
+                alt={item.title}
+                className={cn(
+                  "absolute inset-0 h-full w-full object-cover transition-all duration-300 ease-out",
+                  isActive ? "scale-100 grayscale-0" : "scale-110 grayscale"
+                )}
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+              <article className="absolute inset-0 flex flex-col justify-end gap-2 p-4">
+                <h3
+                  className={cn(
+                    "hidden origin-left rotate-90 text-sm font-light uppercase tracking-wider text-white/80 transition-all duration-300 ease-out md:block",
+                    isActive ? "opacity-0" : "opacity-100"
+                  )}
+                >
+                  {item.title}
+                </h3>
+
+                <div
+                  className={cn(
+                    "text-white/90 transition-all duration-300 ease-out",
+                    isActive
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-2 opacity-0"
+                  )}
+                >
+                  {item.icon}
+                </div>
+
+                <h3
+                  className={cn(
+                    "text-xl font-bold text-white transition-all duration-300 ease-out",
+                    isActive
+                      ? "translate-y-0 opacity-100 delay-75"
+                      : "translate-y-2 opacity-0"
+                  )}
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  className={cn(
+                    "w-full max-w-xs text-sm text-white/80 transition-all duration-300 ease-out",
+                    isActive
+                      ? "translate-y-0 opacity-100 delay-100"
+                      : "translate-y-2 opacity-0"
+                  )}
+                >
+                  {item.description}
+                </p>
+              </article>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+
   return (
     <ul
-      className={cn(
-        "w-full max-w-6xl gap-2",
-        "grid",
-        "h-[600px] md:h-[500px]",
-        "transition-[grid-template-columns,grid-template-rows] duration-500 ease-out",
-        className,
-      )}
-      style={{
-        ...gridStyle,
-        ...(isDesktop 
-          ? { gridTemplateRows: '1fr' }
-          : { gridTemplateColumns: '1fr' }
-        )
-      }}
       ref={ref}
+      className={cn("flex w-full flex-col gap-3", className)}
       {...props}
     >
-      {items.map((item, index) => (
-        <li
-          key={item.id}
-          className={cn(
-            "group relative cursor-pointer overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm",
-            "md:min-w-[80px]",
-            "min-h-0 min-w-0"
-          )}
-          onMouseEnter={() => handleInteraction(index)}
-          onFocus={() => handleInteraction(index)}
-          onClick={() => handleInteraction(index)}
-          tabIndex={0}
-          data-active={activeIndex === index}
-        >
-          <img
-            src={item.imgSrc}
-            alt={item.title}
-            className="absolute inset-0 h-full w-full object-cover transition-all duration-300 ease-out group-data-[active=true]:scale-100 group-data-[active=true]:grayscale-0 scale-110 grayscale"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      {items.map((item, index) => {
+        const isActive = activeIndex === index;
 
-          <article
-            className="absolute inset-0 flex flex-col justify-end gap-2 p-4"
+        return (
+          <li
+            key={item.id}
+            className={cn(
+              "group relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm",
+              "transition-all duration-300 ease-out",
+              "cursor-pointer",
+              isActive ? "h-[320px]" : "h-[88px]"
+            )}
+            onClick={() => handleInteraction(index)}
+            tabIndex={0}
+            aria-expanded={isActive}
           >
-            <h3 className="hidden origin-left rotate-90 text-sm font-light uppercase tracking-wider text-white/80 opacity-100 transition-all duration-300 ease-out md:block group-data-[active=true]:opacity-0">
-              {item.title}
-            </h3>
+            <img
+              src={item.imgSrc}
+              alt={item.title}
+              className={cn(
+                "absolute inset-0 h-full w-full object-cover transition-all duration-300 ease-out",
+                isActive ? "scale-100 grayscale-0" : "scale-105 grayscale-[40%]"
+              )}
+            />
 
-            <div className="text-white/90 opacity-0 transition-all duration-300 delay-75 ease-out group-data-[active=true]:opacity-100">
-              {item.icon}
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
 
-            <h3 className="text-xl font-bold text-white opacity-0 transition-all duration-300 delay-150 ease-out group-data-[active=true]:opacity-100">
-              {item.title}
-            </h3>
+            <article className="absolute inset-0 flex flex-col justify-end p-4">
+              <div className="flex items-center gap-3">
+                <div className="text-white/90">{item.icon}</div>
+                <h3 className="text-lg font-bold text-white">{item.title}</h3>
+              </div>
 
-            <p className="w-full max-w-xs text-sm text-white/80 opacity-0 transition-all duration-300 delay-225 ease-out group-data-[active=true]:opacity-100">
-              {item.description}
-            </p>
-          </article>
-        </li>
-      ))}
+              <div
+                className={cn(
+                  "overflow-hidden transition-all duration-300 ease-out",
+                  isActive
+                    ? "mt-3 max-h-40 opacity-100"
+                    : "max-h-0 opacity-0"
+                )}
+              >
+                <p className="max-w-md text-sm text-white/80">
+                  {item.description}
+                </p>
+
+                {item.linkHref && (
+                  <a
+                    href={item.linkHref}
+                    className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-medium text-black"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Explore
+                  </a>
+                )}
+              </div>
+            </article>
+          </li>
+        );
+      })}
     </ul>
   );
 });
+
 ExpandingCards.displayName = "ExpandingCards";
-
-

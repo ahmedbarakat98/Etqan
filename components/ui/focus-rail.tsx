@@ -47,28 +47,22 @@ export function FocusRail({
   items,
   initialIndex = 0,
   loop = true,
-  autoPlay = false,
+  autoPlay = true,
   interval = 4000,
   className,
 }: FocusRailProps) {
   const [active, setActive] = React.useState(initialIndex);
-  const [isHovering, setIsHovering] = React.useState(false);
   const lastWheelTime = React.useRef<number>(0);
 
   const count = items.length;
 
-  if (count === 0) return null;
-
-  const activeIndex = wrap(0, count, active);
-  const activeItem = items[activeIndex];
-
   const handlePrev = React.useCallback(() => {
-    if (!loop && active === 0) return;
+    if (!loop && active <= 0) return;
     setActive((p) => p - 1);
   }, [loop, active]);
 
   const handleNext = React.useCallback(() => {
-    if (!loop && active === count - 1) return;
+    if (!loop && active >= count - 1) return;
     setActive((p) => p + 1);
   }, [loop, active, count]);
 
@@ -94,45 +88,52 @@ export function FocusRail({
   );
 
   React.useEffect(() => {
-    if (!autoPlay || isHovering) return;
-    const timer = setInterval(() => handleNext(), interval);
-    return () => clearInterval(timer);
-  }, [autoPlay, isHovering, handleNext, interval]);
+    if (!autoPlay || count <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setActive((prev) => {
+        if (loop) return prev + 1;
+        return prev >= count - 1 ? 0 : prev + 1;
+      });
+    }, interval);
+
+    return () => window.clearInterval(timer);
+  }, [autoPlay, interval, count, loop]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") handlePrev();
     if (e.key === "ArrowRight") handleNext();
   };
 
-  const swipeConfidenceThreshold = 10000;
-
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
-
   const onDragEnd = (
     _e: MouseEvent | TouchEvent | PointerEvent,
     { offset, velocity }: PanInfo
   ) => {
-    const swipe = swipePower(offset.x, velocity.x);
+    const movedEnough = Math.abs(offset.x) > 50;
+    const fastEnough = Math.abs(velocity.x) > 500;
 
-    if (swipe < -swipeConfidenceThreshold) {
+    if (!(movedEnough || fastEnough)) return;
+
+    if (offset.x < 0) {
       handleNext();
-    } else if (swipe > swipeConfidenceThreshold) {
+    } else {
       handlePrev();
     }
   };
+
+  if (count === 0) return null;
+
+  const activeIndex = wrap(0, count, active);
+  const activeItem = items[activeIndex];
 
   const visibleIndices = [-2, -1, 0, 1, 2];
 
   return (
     <div
       className={cn(
-        "group relative flex h-[600px] w-full select-none flex-col overflow-hidden overflow-x-hidden bg-neutral-950 text-white outline-none",
+        "group relative flex h-[620px] w-full select-none flex-col overflow-x-hidden bg-neutral-950 text-white outline-none md:h-[700px]",
         className
       )}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
       tabIndex={0}
       onKeyDown={onKeyDown}
       onWheel={onWheel}
@@ -159,11 +160,15 @@ export function FocusRail({
 
       <div className="relative z-10 flex flex-1 flex-col justify-center px-4 md:px-8">
         <motion.div
-          className="relative mx-auto flex h-[360px] w-full max-w-6xl cursor-grab items-center justify-center perspective-[1200px] active:cursor-grabbing"
+          className="relative mx-auto flex h-[280px] w-full max-w-6xl cursor-grab touch-pan-y items-center justify-center perspective-[1200px] active:cursor-grabbing md:h-[360px]"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.12}
+          dragMomentum={false}
           onDragEnd={onDragEnd}
+          style={{
+            touchAction: "pan-y",
+          }}
         >
           {visibleIndices.map((offset) => {
             const absIndex = active + offset;
@@ -175,20 +180,20 @@ export function FocusRail({
             const isCenter = offset === 0;
             const dist = Math.abs(offset);
 
-            const xOffset = offset * 320;
+            const xOffset = offset * 220;
             const zOffset = -dist * 180;
             const cardScale = isCenter ? 1 : 0.85;
-            const rotateY = offset * -20;
+            const rotateY = offset * -16;
 
             const opacity = isCenter ? 1 : Math.max(0.1, 1 - dist * 0.5);
             const blur = isCenter ? 0 : dist * 6;
-            const brightness = isCenter ? 1 : 0.5;
+            const brightness = isCenter ? 1 : 0.55;
 
             return (
               <motion.div
-                key={absIndex}
+                key={`${item.id}-${absIndex}`}
                 className={cn(
-                  "absolute aspect-[3/4] w-[260px] rounded-2xl border-t border-white/20 bg-neutral-900 shadow-2xl transition-shadow duration-300 md:w-[300px]",
+                  "absolute aspect-[3/4] w-[180px] rounded-2xl border-t border-white/20 bg-neutral-900 shadow-2xl transition-shadow duration-300 sm:w-[210px] md:w-[300px]",
                   isCenter ? "z-20 shadow-white/10" : "z-10"
                 )}
                 initial={false}
@@ -228,8 +233,8 @@ export function FocusRail({
           })}
         </motion.div>
 
-        <div className="pointer-events-auto mx-auto mt-12 flex w-full max-w-4xl flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex h-32 flex-1 flex-col items-center justify-center text-center md:items-start md:text-left">
+        <div className="pointer-events-auto mx-auto mt-10 flex w-full max-w-4xl flex-col items-center justify-between gap-6 md:mt-12 md:flex-row">
+          <div className="flex min-h-[128px] flex-1 flex-col items-center justify-center text-center md:items-start md:text-left">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
@@ -245,12 +250,12 @@ export function FocusRail({
                   </span>
                 )}
 
-                <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
                   {activeItem.title}
                 </h2>
 
                 {activeItem.description && (
-                  <p className="max-w-md text-neutral-400">
+                  <p className="max-w-md text-sm text-neutral-400 sm:text-base">
                     {activeItem.description}
                   </p>
                 )}
