@@ -1,4 +1,4 @@
-  import {
+import {
   Map,
   BarChart3,
   Lightbulb,
@@ -7,9 +7,17 @@
   Workflow,
   Globe2,
   Mail,
+  type LucideIcon,
 } from "lucide-react";
 
-const services = [
+type Service = {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  items: string[];
+};
+
+const services: Service[] = [
   {
     icon: Map,
     title: "Geoinformatics Data Services",
@@ -66,7 +74,7 @@ const services = [
   },
 ];
 
-const approach = [
+const approach: string[] = [
   "Understand",
   "Design",
   "Develop",
@@ -75,7 +83,7 @@ const approach = [
   "Support",
 ];
 
-const whyEtqan = [
+const whyEtqan: string[] = [
   "Integrated geospatial and engineering expertise",
   "Strong experience in government and international projects",
   "End-to-end service delivery from data to systems",
@@ -83,29 +91,11 @@ const whyEtqan = [
   "Custom solutions tailored to each client’s needs",
 ];
 
-export default function page() {
+export default function Page() {
   return (
-  //   <RevealScale>
-  // <div className="w-full h-screen">
-  //       <Image
-  //         width={1000}
-  //         height={1000}
-  //         className="absolute inset-0 w-full h-full object-cover"
-  //         src="/services.jpg"
-  //         alt="srvices"
-  //       />
-  //       <div className="absolute inset-0 bg-black/40" />
-  //       <div className="relative z-10 flex h-full items-center justify-center text-white">
-  //         <h1 className="text-3xl text-center rubik px-50 md:text-3xl lg:text-4xl font-bold">
-  //          How can Geographic Information Science enhance business insights, reduce costs, and improve decision quality?
-  //         </h1>
-  //       </div>
-  //     </div>
-  //     </RevealScale>
     <main className="bg-[#0b0f19] text-white">
       <section className="px-6 py-24 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">
-          {/* HERO */}
           <section className="mx-auto max-w-4xl text-center">
             <span className="mb-5 inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
               Our Services
@@ -129,21 +119,13 @@ export default function page() {
             </p>
           </section>
 
-          {/* SERVICES GRID */}
           <section className="grid gap-8 lg:grid-cols-2">
             {services.map((service) => (
-              <ServiceCard
-                key={service.title}
-                icon={service.icon}
-                title={service.title}
-                desc={service.desc}
-                items={service.items}
-              />
+              <ServiceCard key={service.title} {...service} />
             ))}
           </section>
 
-          {/* APPROACH */}
-          <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10">
+          <section className="rounded-3xl border border-white/10 bg-white/3 p-8 md:p-10">
             <div className="mb-10 max-w-3xl">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
                 <Workflow className="h-6 w-6 text-blue-400" />
@@ -163,7 +145,7 @@ export default function page() {
               {approach.map((step, index) => (
                 <div
                   key={step}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center"
+                  className="rounded-2xl border border-white/10 bg-white/3 p-5 text-center"
                 >
                   <span className="text-sm text-blue-400">
                     {String(index + 1).padStart(2, "0")}
@@ -174,7 +156,6 @@ export default function page() {
             </div>
           </section>
 
-          {/* WHY ETQAN */}
           <section className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
@@ -195,7 +176,7 @@ export default function page() {
               {whyEtqan.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/3 p-5"
                 >
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-blue-400" />
                   <p className="text-gray-300">{item}</p>
@@ -204,7 +185,6 @@ export default function page() {
             </div>
           </section>
 
-          {/* CTA */}
           <section className="rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-8 text-center md:p-12">
             <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10">
               <Mail className="h-7 w-7 text-blue-400" />
@@ -232,19 +212,9 @@ export default function page() {
   );
 }
 
-function ServiceCard({
-  icon: Icon,
-  title,
-  desc,
-  items,
-}: {
-  icon: React.ElementType;
-  title: string;
-  desc: string;
-  items: string[];
-}) {
+function ServiceCard({ icon: Icon, title, desc, items }: Service) {
   return (
-    <article className="rounded-3xl border border-white/10 bg-white/[0.03] p-7 transition hover:-translate-y-1 hover:bg-white/[0.06]">
+    <article className="rounded-3xl border border-white/10 bg-white/3 p-7 transition hover:-translate-y-1 hover:bg-white/[0.06]">
       <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10">
         <Icon className="h-7 w-7 text-blue-400" />
       </div>

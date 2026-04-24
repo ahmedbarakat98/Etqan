@@ -12,7 +12,13 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const values = [
+type CardItem = {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+};
+
+const values: CardItem[] = [
   {
     icon: Sparkles,
     title: "Innovation",
@@ -40,13 +46,13 @@ const values = [
   },
 ];
 
-const highlights = [
+const highlights: string[] = [
   "Scalable Solutions",
   "Data-driven Decisions",
   "Real-world Impact",
 ];
 
-const commitments = [
+const commitments: string[] = [
   "Advanced GIS & Geoinformatics Technologies",
   "Scalable & Reliable Solutions",
   "Full Project Lifecycle Support",
@@ -56,13 +62,13 @@ const commitments = [
 export default function AboutPage() {
   return (
     <main className="bg-[#0b0f19] text-white">
-      {/* HERO IMAGE */}
       <section className="relative h-screen w-full overflow-hidden">
         <Image
           src="/industries.jpeg"
           alt="Industries"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
 
@@ -81,10 +87,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CONTENT */}
       <section className="px-6 py-20 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">
-          {/* INTRO */}
           <section className="mx-auto max-w-4xl text-center">
             <span className="mb-4 inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
               About Etqan
@@ -101,9 +105,8 @@ export default function AboutPage() {
             </p>
           </section>
 
-          {/* ABOUT */}
           <section className="grid items-center gap-10 md:grid-cols-2">
-            <div className="space-y-5 text-gray-300 leading-relaxed">
+            <div className="space-y-5 leading-relaxed text-gray-300">
               <p>
                 We empower governments, enterprises, and organizations to unlock
                 the full value of spatial data through integrated systems,
@@ -124,7 +127,7 @@ export default function AboutPage() {
               <div className="space-y-5">
                 {highlights.map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-blue-400" />
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-blue-400" />
                     <span className="text-lg text-gray-100">{item}</span>
                   </div>
                 ))}
@@ -132,11 +135,10 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* WHAT WE DELIVER */}
           <section className="mx-auto max-w-4xl text-center">
             <h2 className="mb-6 text-3xl font-semibold">What We Deliver</h2>
 
-            <p className="text-gray-400 leading-relaxed">
+            <p className="leading-relaxed text-gray-400">
               From urban planning and infrastructure development to advanced
               geospatial systems and cutting-edge technologies such as Digital
               Twin, AI, BIM Integration, and GeoAI, we build intelligent spatial
@@ -144,7 +146,6 @@ export default function AboutPage() {
             </p>
           </section>
 
-          {/* VISION & MISSION */}
           <section className="grid gap-8 md:grid-cols-2">
             <InfoCard
               icon={Eye}
@@ -159,7 +160,6 @@ export default function AboutPage() {
             />
           </section>
 
-          {/* COMMITMENTS */}
           <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10">
             <h2 className="mb-8 text-3xl font-semibold">Our Commitment</h2>
 
@@ -173,7 +173,6 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* CORE VALUES */}
           <section>
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-semibold md:text-4xl">
@@ -201,15 +200,7 @@ export default function AboutPage() {
   );
 }
 
-function InfoCard({
-  icon: Icon,
-  title,
-  desc,
-}: {
-  icon: React.ElementType;
-  title: string;
-  desc: string;
-}) {
+function InfoCard({ icon: Icon, title, desc }: CardItem) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition hover:bg-white/[0.07]">
       <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
@@ -222,15 +213,7 @@ function InfoCard({
   );
 }
 
-function ValueCard({
-  icon: Icon,
-  title,
-  desc,
-}: {
-  icon: React.ElementType;
-  title: string;
-  desc: string;
-}) {
+function ValueCard({ icon: Icon, title, desc }: CardItem) {
   return (
     <div className="group rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:bg-white/[0.08]">
       <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 transition group-hover:scale-110">
