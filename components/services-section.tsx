@@ -89,8 +89,9 @@ const services: CardItem[] = [
 export default function ServicesSection() {
   return (
     <section className="bg-black text-white py-20 px-6">
-      {/* Expanding Cards */}
-      <ExpandingCards items={services} defaultActiveIndex={0} />
+      <div className="mx-auto w-full md:w-[75vw]">
+        <ExpandingCards items={services} defaultActiveIndex={0} />
+      </div>
     </section>
   );
 }

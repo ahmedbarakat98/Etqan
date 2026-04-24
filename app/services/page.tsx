@@ -93,7 +93,7 @@ const whyEtqan: string[] = [
 
 export default function Page() {
   return (
-    <main className="bg-[#0b0f19] text-white">
+    <main className="bg-[#0b0f19] pt-5 md:pt-10 text-white">
       <section className="px-6 py-24 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">
           <section className="mx-auto max-w-4xl text-center">

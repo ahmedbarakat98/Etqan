@@ -1,6 +1,5 @@
 "use client";
 import logo from "../public/maps.png";
-import TextType from "@/components/TextType";
 import {
   Map,
   MapControls,
@@ -92,110 +91,6 @@ export default function Home() {
       "https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=300&h=200&fit=crop",
     lng: 31.4917,
     lat: 29.9850,
-  },
-  {
-    id: 7,
-    name: "The British University in Egypt",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=300&h=200&fit=crop",
-    lng: 31.6294,
-    lat: 30.1412,
-  },
-  {
-    id: 8,
-    name: "Misr International University",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=300&h=200&fit=crop",
-    lng: 31.4658,
-    lat: 30.1453,
-  },
-  {
-    id: 9,
-    name: "MTI University",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=200&fit=crop",
-    lng: 31.3007,
-    lat: 30.0069,
-  },
-  {
-    id: 10,
-    name: "Canadian International College",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=300&h=200&fit=crop",
-    lng: 31.4575,
-    lat: 30.0336,
-  },
-  {
-    id: 11,
-    name: "Nile University",
-    label: "National",
-    category: "National University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop",
-    lng: 30.9720,
-    lat: 30.0715,
-  },
-  {
-    id: 12,
-    name: "MSA University",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?w=300&h=200&fit=crop",
-    lng: 30.9495,
-    lat: 29.9990,
-  },
-  {
-    id: 13,
-    name: "Misr University for Science and Technology",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
-    lng: 30.9685,
-    lat: 29.9757,
-  },
-  {
-    id: 14,
-    name: "October 6 University",
-    label: "Private",
-    category: "Private University",
-    rating: 0,
-    reviews: 0,
-    hours: "Check official site",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=200&fit=crop",
-    lng: 30.9920,
-    lat: 29.9825,
   },
 ];
   const sampleImages = [

@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 const menuItems = [
   { label: "Home", ariaLabel: "Go to home page", link: "/" },
   { label: "Etqan Academy", ariaLabel: "Etqan Academy", link: "/etqan-academy" },
-  { label: "Product", ariaLabel: "Product", link: "/products" },
+  { label: "Product", ariaLabel: "Product", link: "/Products" },
   { label: "About", ariaLabel: "Learn about us", link: "/about" },
   { label: "Services", ariaLabel: "View our services", link: "/services" },
   

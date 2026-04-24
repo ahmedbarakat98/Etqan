@@ -82,7 +82,7 @@ export default function page() {
   return (
     <>
       <div className="w-full h-fit">
-        <RevealScale>
+        {/* <RevealScale>
           <section className="w-full h-screen">
             <Image
               width={1000}
@@ -100,11 +100,11 @@ export default function page() {
               </h1>
             </div>
           </section>
-        </RevealScale>
+        </RevealScale> */}
 
         {/* Our Cources  */}
 
-        <div className="flex min-h-screen w-full flex-col items-center justify-center overflow-x-hidden bg-neutral-950 py-20">
+        <div className="flex pt-10 md:pt-40 min-h-screen w-full flex-col items-center justify-center overflow-x-hidden bg-neutral-950 py-20">
           <div className="mb-12 text-center">
             <h1 className="mb-2 text-4xl font-bold text-white">
                Training Programs

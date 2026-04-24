@@ -62,30 +62,6 @@ const commitments: string[] = [
 export default function AboutPage() {
   return (
     <main className="bg-[#0b0f19] text-white">
-      <section className="relative h-screen w-full overflow-hidden">
-        <Image
-          src="/industries.jpeg"
-          alt="Industries"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 flex h-full items-center justify-center px-6 text-center">
-          <h1 className="rubik max-w-5xl text-3xl font-bold leading-tight md:text-5xl">
-            <TextType
-              text="Geospatial Intelligence That Drives Real Impact"
-              typingSpeed={80}
-              pauseDuration={3000}
-              showCursor
-              cursorCharacter="_"
-            />
-          </h1>
-        </div>
-      </section>
 
       <section className="px-6 py-20 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">

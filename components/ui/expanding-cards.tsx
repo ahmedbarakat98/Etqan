@@ -47,6 +47,16 @@ export const ExpandingCards = React.forwardRef<
     }
   }, []);
 
+  React.useEffect(() => {
+  if (isDesktop) return; // يشتغل بس في الموبايل
+
+  const interval = setInterval(() => {
+    setActiveIndex((prev) => (prev + 1) % items.length);
+  }, 2500); // كل 2.5 ثانية
+
+  return () => clearInterval(interval);
+}, [isDesktop, items.length]);
+
   if (!items.length) return null;
 
   const handleInteraction = (index: number) => {
@@ -64,7 +74,7 @@ export const ExpandingCards = React.forwardRef<
       <ul
         ref={ref}
         className={cn(
-          "grid h-[500px] w-full max-w-6xl gap-2",
+          "grid h-[500px] w-full gap-2",
           "transition-[grid-template-columns] duration-500 ease-out",
           className
         )}
