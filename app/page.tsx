@@ -94,9 +94,16 @@ export default function Home() {
   },
 ];
   const sampleImages = [
-    { src: "/training.jpg", alt: "Arjaa" },
-    { src: "/tech.jpg", alt: "Bazooka" },
-    { src: "/industries.jpg", alt: "Dubai" },
+    { src: "/DSC_0060.JPG", alt: "Arjaa" },
+    { src: "/1.jpg", alt: "Bazooka" },
+    { src: "/11.jpg", alt: "Bazooka" },
+    { src: "/22.jpg", alt: "Bazooka" },
+    { src: "/6.png", alt: "Dubai" },
+    { src: "/19.png", alt: "Dubai" },
+    { src: "/9.png", alt: "Dubai" },
+    { src: "/15.png", alt: "Dubai" },
+    { src: "/10.png", alt: "Dubai" },
+    { src: "/2.png", alt: "Dubai" },
   ];
   return (
     <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">

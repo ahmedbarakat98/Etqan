@@ -63,7 +63,7 @@ export default function AboutPage() {
   return (
     <main className="bg-[#0b0f19] text-white">
 
-      <section className="px-6 py-20 md:px-20">
+      <section className="px-6 py-35 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">
           <section className="mx-auto max-w-4xl text-center">
             <span className="mb-4 inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
