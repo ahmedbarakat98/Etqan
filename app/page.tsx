@@ -94,7 +94,6 @@ export default function Home() {
   },
 ];
   const sampleImages = [
-    { src: "/DSC_0060.JPG", alt: "Arjaa" },
     { src: "/1.jpg", alt: "Bazooka" },
     { src: "/11.jpg", alt: "Bazooka" },
     { src: "/22.jpg", alt: "Bazooka" },
