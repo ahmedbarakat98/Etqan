@@ -94,13 +94,7 @@ export default function Home() {
   },
 ];
   const sampleImages = [
-    { src: "hero-gallery/6.png", alt: "Dubai" },
-    { src: "hero-gallery/19.png", alt: "Dubai" },
-    { src: "hero-gallery/9.png", alt: "Dubai" },
-    { src: "hero-gallery/15.png", alt: "Dubai" },
-    { src: "hero-gallery/10.png", alt: "Dubai" },
-    { src: "hero-gallery/2.png", alt: "Dubai" },
-    { src: "hero-gallery/5.png", alt: "Dubai" },
+    { src: "alabd.png", alt: "Dubai" },
   ];
   return (
     <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">
