@@ -122,9 +122,9 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Button */}
-          <button className="bg-sky-500 hidden md:flex md:text-sm hover:bg-sky-300 text-white font-semibold px-5 py-2.5 rounded-xl transition">
-            Get Started
-          </button>
+          <Link href="/contact" className="bg-sky-500 hidden md:flex md:text-sm hover:bg-sky-300 text-white font-semibold px-5 py-2.5 rounded-xl transition">
+            Get Contact
+          </Link>
         </div>
       </div>
     </div>

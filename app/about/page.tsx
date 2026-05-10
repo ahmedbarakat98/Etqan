@@ -11,6 +11,7 @@ import {
   Target,
   type LucideIcon,
 } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 type CardItem = {
   icon: LucideIcon;
@@ -62,7 +63,7 @@ const commitments: string[] = [
 export default function AboutPage() {
   return (
     <main className="bg-[#0b0f19] text-white">
-
+      <Reveal>
       <section className="px-6 py-35 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">
           <section className="mx-auto max-w-4xl text-center">
@@ -172,12 +173,14 @@ export default function AboutPage() {
           </section>
         </div>
       </section>
+      </Reveal>
     </main>
   );
 }
 
 function InfoCard({ icon: Icon, title, desc }: CardItem) {
   return (
+    <Reveal>
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition hover:bg-white/[0.07]">
       <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
         <Icon className="h-6 w-6 text-blue-400" />
@@ -186,6 +189,7 @@ function InfoCard({ icon: Icon, title, desc }: CardItem) {
       <h3 className="mb-3 text-2xl font-semibold">{title}</h3>
       <p className="leading-relaxed text-gray-400">{desc}</p>
     </div>
+    </Reveal>
   );
 }
 

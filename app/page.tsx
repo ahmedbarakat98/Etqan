@@ -94,7 +94,13 @@ export default function Home() {
   },
 ];
   const sampleImages = [
-    { src: "alabd.png", alt: "Dubai" },
+    { src: "hero-gallery/6.png", alt: "dash1" },
+    { src: "hero-gallery/2.png", alt: "dash2" },
+    { src: "hero-gallery/5.png", alt: "dash3" },
+    { src: "hero-gallery/9.png", alt: "dash4" },
+    { src: "hero-gallery/10.png", alt: "dash5" },
+    { src: "hero-gallery/15.png", alt: "platform" },
+    { src: "hero-gallery/19.png", alt: "dash6" },
   ];
   return (
     <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">

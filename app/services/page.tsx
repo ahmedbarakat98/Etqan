@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import {
   Map,
   BarChart3,
@@ -214,6 +215,7 @@ export default function Page() {
 
 function ServiceCard({ icon: Icon, title, desc, items }: Service) {
   return (
+    <Reveal>
     <article className="rounded-3xl border border-white/10 bg-white/3 p-7 transition hover:-translate-y-1 hover:bg-white/[0.06]">
       <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10">
         <Icon className="h-7 w-7 text-blue-400" />
@@ -232,5 +234,6 @@ function ServiceCard({ icon: Icon, title, desc, items }: Service) {
         ))}
       </div>
     </article>
+    </Reveal>
   );
 }

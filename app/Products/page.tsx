@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import {
   Satellite,
   ShieldCheck,
@@ -134,6 +135,7 @@ export default function ProductsPage() {
       <section className="px-6 py-24 md:px-20">
         <div className="mx-auto max-w-7xl space-y-24">
           {/* HERO */}
+          <Reveal>
           <div className="mx-auto max-w-4xl text-center">
             <span className="mb-5 inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
               Products & Innovative Solutions
@@ -155,15 +157,19 @@ export default function ProductsPage() {
               efficiency, and digital transformation.
             </p>
           </div>
+          </Reveal>
 
           {/* SOLUTIONS */}
+          <Reveal>
           <section className="space-y-8">
             {solutions.map((item, index) => (
               <SolutionCard key={item.title} item={item} index={index} />
             ))}
           </section>
+          </Reveal>
 
           {/* HOW WE DELIVER */}
+          <Reveal>
           <section className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10">
             <div className="mb-10 max-w-3xl">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
@@ -193,8 +199,10 @@ export default function ProductsPage() {
               ))}
             </div>
           </section>
+          </Reveal>
 
           {/* OUR VALUE */}
+          <Reveal>
           <section className="rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-8 md:p-10">
             <div className="mb-10 max-w-3xl">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
@@ -220,6 +228,7 @@ export default function ProductsPage() {
               ))}
             </div>
           </section>
+          </Reveal>
         </div>
       </section>
     </main>

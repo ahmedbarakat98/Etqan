@@ -1,5 +1,6 @@
 import React from "react";
 import { FocusRail, type FocusRailItem } from "@/components/ui/focus-rail";
+import Reveal from "@/components/Reveal";
 
 const ITEMS: FocusRailItem[] = [
   {
@@ -239,6 +240,7 @@ export default function Page() {
             </p>
           </div>
 
+           <Reveal>
           <div className="grid gap-6 md:grid-cols-2">
             {COURSE_DETAILS.map((course) => (
               <article
@@ -311,6 +313,7 @@ export default function Page() {
               </article>
             ))}
           </div>
+          </Reveal>
         </div>
       </section>
     </div>
