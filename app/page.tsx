@@ -94,13 +94,14 @@ export default function Home() {
   },
 ];
   const sampleImages = [
-    { src: "hero-gallery/6.png", alt: "dash1" },
-    { src: "hero-gallery/2.png", alt: "dash2" },
-    { src: "hero-gallery/5.png", alt: "dash3" },
-    { src: "hero-gallery/9.png", alt: "dash4" },
-    { src: "hero-gallery/10.png", alt: "dash5" },
-    { src: "hero-gallery/15.png", alt: "platform" },
-    { src: "hero-gallery/19.png", alt: "dash6" },
+    { src: "hero-gallery/6.webp", alt: "dash1" },
+    { src: "hero-gallery/2.webp", alt: "dash2" },
+    { src: "hero-gallery/1.webp", alt: "dash11" },
+    { src: "hero-gallery/5.webp", alt: "dash3" },
+    { src: "hero-gallery/9.webp", alt: "dash4" },
+    { src: "hero-gallery/10.webp", alt: "dash5" },
+    { src: "hero-gallery/15.webp", alt: "platform" },
+    { src: "hero-gallery/19.webp", alt: "dash6" },
   ];
   return (
     <div className="flex flex-col min-h-screen items-center justify-center font-sans bg-black">
